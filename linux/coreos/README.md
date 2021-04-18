@@ -106,12 +106,25 @@ and, as above, rebuild the `ign` (Ignition) from the `bu` (Butane), and serve it
 so that we can now launch the installation on the new machine, pointing it to our Ignition file:
 
     sudo coreos-installer install /dev/nvme0n1 \
-        --ignition-url http://192.168.1.100:8000/first.ign
+        --insecure-igntion --ignition-url http://192.168.1.124:8000/first.ign \
+        --stream stable
+
+Reboot (twice?) and you can:
+
+    ssh core@MACHINE
+
+Note that UEFI Booting from USB can be PITA, especially if the machine already has a previous Fedora; you have to:
+
+1. NUC: Press F10 to enter boot menu (F2 enters Setup, F7 BIOS, F12 PXE)
+1. Note the x3 (!) first entries labeled "Fedora" (following by IPv4 and IPv6 PXE)
+1. Guess that the 1st Fedora is an old install, 2nd is GRUB, and 3rd is USB UEFI Boot
+1. Secure Boot can (should) be enabled
+
+`ls /sys/firmware/efi/` existence proves that CoreOS ISO booted as UEFI.
 
 
 ## ToDo
 
-1. bare metal
 1. hello, world server container, like https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-containers/, via Git!
 1. custom toolbox
 1. podman from within toolbox
@@ -120,3 +133,6 @@ so that we can now launch the installation on the new machine, pointing it to ou
 1. webshell
 1. Kube, e.g. https://github.com/poseidon/typhoon
 1. cadvisor
+1. CoreOS disable non-needing systemd service processes? (Minor optimization)
+1. CoreOS security.. as long as root account exists, and files can be ostree added and reboot, still risk?
+1. How to make a custom CoreOS based distribution, self built, with much less packages? No podman, no docker..
