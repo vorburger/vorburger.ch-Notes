@@ -28,7 +28,9 @@ Following https://docs.fedoraproject.org/en-US/fedora-coreos/getting-started/ :
     ssh -o StrictHostKeyChecking=accept-new -p 2222 core@localhost
 
     pstree
+    systemctl status
     systemctl --type=service --state=active
+    hostnamectl
 
     podman run --rm -it hello-world
 
@@ -63,6 +65,13 @@ See https://docs.fedoraproject.org/en-US/fedora-coreos/storage/ :
     free -h
 
 Note that there's No Swap, by default (good), but there's a 50 GB `/var`, defined in our [`first.bu`](first.bu).
+
+
+## cgroups v2
+
+As per https://lists.fedoraproject.org/archives/list/coreos-status@lists.fedoraproject.org/thread/6NGBXYMJ4YU3V667XN627WOGCJA47POT/,
+with some background e.g. on https://thenewstack.io/linux-cgroups-v2-brings-rootless-containers-superior-memory-management/,
+with the our [`first.bu`](first.bu), `ls /sys/fs/cgroup` shows e.g. `system.slice` with the limits of each systemd service.
 
 
 ## Reset VM and start over
@@ -102,12 +111,12 @@ so that we can now launch the installation on the new machine, pointing it to ou
 
 ## ToDo
 
-1. reduce services
 1. bare metal
+1. hello, world server container, like https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-containers/, via Git!
 1. custom toolbox
 1. podman from within toolbox
 1. IPFS
 1. Marketplace
 1. webshell
-1. cadvisor
 1. Kube, e.g. https://github.com/poseidon/typhoon
+1. cadvisor
