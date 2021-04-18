@@ -1,6 +1,7 @@
 This contains my public Blog like Notes (including like "Trip Reports"):
 
-* [FOSDEM 2021](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
+* 2021.02 [FOSDEM](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
+* 2021.04 [Exploring Fedora CoreOS](linux/coreos/)
 
 by http://www.vorburger.ch, for anything that doesn't fit on https://twitter.com/vorburger,
 continuing http://blog2.vorburger.ch and older http://blog1.vorburger.ch. All content
