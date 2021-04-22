@@ -123,6 +123,25 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 `ls /sys/firmware/efi/` existence proves that CoreOS ISO booted as UEFI.
 
 
+## Personal User
+
+Let's set-up another user than `core`, which does not have root, that we use for development, and under which we can later run containers,
+as per https://github.com/endocode/coreos-docs/blob/master/os/adding-users.md#add-user-manually:
+
+    sudo useradd -p "*" -U -m vorburger
+    sudo mkdir -p ~vorburger/.ssh/authorized_keys.d
+    sudo cp ~/.ssh/authorized_keys.d/ignition ~vorburger/.ssh/authorized_keys.d/
+    sudo chmod 700 ~vorburger/.ssh
+    sudo chmod 700 ~vorburger/.ssh/authorized_keys.d
+    sudo chown -R vorburger.vorburger ~vorburger/.ssh/
+
+To start over:
+
+    sudo userdel -rZ vorburger
+
+_TODO Just add to [`first.bu`](first.bu) instead?_
+
+
 ## ToDo
 
 1. hello, world server container, like https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-containers/, via Git!
