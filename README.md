@@ -1,7 +1,8 @@
 This contains my public Blog like Notes (including like "Trip Reports"):
 
-* 2021.02 [FOSDEM](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
+* 2021.05.01 [SSH Key type ed25519-sk (and ecdsa-sk)](security/ed25519-sk.md)
 * 2021.04 [Exploring Fedora CoreOS](linux/coreos/)
+* 2021.02 [FOSDEM](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
 
 by http://www.vorburger.ch, for anything that doesn't fit on https://twitter.com/vorburger,
 continuing http://blog2.vorburger.ch and older http://blog1.vorburger.ch. All content
