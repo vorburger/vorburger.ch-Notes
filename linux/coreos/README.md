@@ -156,7 +156,8 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 
 `podman run ... --read-only`, with or without `--read-only-tmpfs`, are other options possibly of interest.
 
-`systemctl --user enable --now hello-app` enables the unit to auto-start.
+`loginctl enable-linger core && systemctl --user enable --now hello-app` enables the unit to auto-start.
+(See [Documention about enabling systemd lingering](https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/).)
 
 `sudo systemctl reboot` tests the container's automatic start-up.
 
@@ -210,13 +211,15 @@ as per https://github.com/endocode/coreos-docs/blob/master/os/adding-users.md#ad
     sudo chmod 700 ~vorburger/.ssh/authorized_keys.d
     sudo chown -R vorburger.vorburger ~vorburger/.ssh/
 
+Remember to [enable systemd lingering](https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/):
+
+    loginctl enable-linger vorburger
+
 To start over:
 
     sudo userdel -rZ vorburger
 
-_TODO https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/ : `loginctl enable-linger` may be required for personal users, e.g. on Silverblue desktop (but not on CoreOS)._
-
-_TODO `/etc/subuid` and `/etc/subgid` ?_
+ _TODO `/etc/subuid` and `/etc/subgid` ?_
 
 _TODO Just add to [`first.bu`](first.bu) instead?_
 
