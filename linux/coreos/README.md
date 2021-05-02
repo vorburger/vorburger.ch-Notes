@@ -125,6 +125,8 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 
 ## Containers
 
+### Podman run in systemd
+
 `podman run -d --name hello-app -p 9090:8080 gcr.io/google-samples/hello-app:1.0` runs https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app on http://localhost:9090. But this is manual, and won't survive a restart.
 
 `podman generate systemd --new -n hello-app > ~/.config/systemd/user/hello-app.service` produces a proposed systemd service unit file.
@@ -144,6 +146,42 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 `sudo systemctl reboot` tests the container's automatic start-up.
 
 _TODO `loginctl enable-linger` may be required for personal users, e.g. on Silverblue desktop (but not on CoreOS)._
+
+
+### Podman play kube in systemd
+
+    podman run -d --name hello-app -p 9090:8080 gcr.io/google-samples/hello-app:1.0
+
+    podman generate kube hello-app > ~/.config/k8s/hello-app.yaml
+    
+    podman rm -f hello-app
+    
+    podman play kube ~/.config/k8s/hello-app.yaml
+
+    podman pod rm -f hello-app_pod
+
+`~/.config/systemd/user/hello-app.service` for this:
+
+    [Unit]
+    Wants=network.target
+    After=network-online.target
+    RequiresMountsFor=/var/home/core/.local/share/containers/storage /run/user/1000/containers
+
+    [Service]
+    Environment=PODMAN_SYSTEMD_UNIT=%n
+    Restart=always
+    TimeoutStopSec=7
+    ExecStartPre=/usr/bin/podman pod rm -f -i hello-app_pod
+    ExecStart=/usr/bin/podman play kube --log-driver journald %E/k8s/hello-app.yaml
+    ExecStop=/usr/bin/podman pod stop --ignore hello-app_pod -t 10
+    Type=forking
+
+    [Install]
+    WantedBy=multi-user.target default.target
+
+Nota bene that `podman play kube --log-driver journald` is broken in Podman 3.1.0
+due to https://github.com/containers/podman/issues/10015, fixed by https://github.com/containers/podman/pull/10044;
+https://github.com/containers/podman/issues/10117 seems to imply that Podman 3.1.1 will include the fix.
 
 
 ## Personal User
