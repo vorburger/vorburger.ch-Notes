@@ -32,6 +32,10 @@ storage:
           # Raise console message logging level from DEBUG (7) to WARNING (4)
           # to hide audit messages from the interactive console
           kernel.printk=4
+    - path: /var/lib/systemd/linger/core
+      # https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/
+      # https://github.com/vorburger/vorburger.ch-Notes/tree/develop/linux/coreos#podman-play-kube-in-systemd
+      mode: 0644
 systemd:
   units:
     # https://docs.fedoraproject.org/en-US/fedora-coreos/kernel-args/#_example_moving_to_cgroups_v2
