@@ -48,6 +48,21 @@ Note https://docs.fedoraproject.org/en-US/fedora-coreos/bootloader-updates/
 and https://github.com/coreos/bootupd/.
 
 
+## Switching to a Different Update Stream
+
+As per https://docs.fedoraproject.org/en-US/fedora-coreos/update-streams/ :
+
+    sudo systemctl stop zincati.service
+    sudo rpm-ostree rebase --bypass-driver fedora/x86_64/coreos/testing
+    sudo systemctl reboot
+    rpm-ostree status
+
+To undo:
+
+    sudo rpm-ostree rebase --bypass-driver fedora/x86_64/coreos/stable
+    rpm-ostree rollback -r
+
+
 ## Administration
 
 See https://docs.fedoraproject.org/en-US/fedora-coreos/debugging-with-toolbox/ :
@@ -145,8 +160,6 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 
 `sudo systemctl reboot` tests the container's automatic start-up.
 
-_TODO `loginctl enable-linger` may be required for personal users, e.g. on Silverblue desktop (but not on CoreOS)._
-
 
 ### Podman play kube in systemd
 
@@ -181,7 +194,8 @@ _TODO `loginctl enable-linger` may be required for personal users, e.g. on Silve
 
 Nota bene that `podman play kube --log-driver journald` is broken in Podman 3.1.0
 due to https://github.com/containers/podman/issues/10015, fixed by https://github.com/containers/podman/pull/10044;
-https://github.com/containers/podman/issues/10117 seems to imply that Podman 3.1.1 will include the fix.
+https://github.com/containers/podman/issues/10117 seems to imply that Podman 3.1.1+ will include the fix, and indeed
+switching the update stream from the "stable" 33.20210412.3.0 to the 33.20210426.2.0 from "testing" gives us Podman 3.1.2.
 
 
 ## Personal User
@@ -199,6 +213,8 @@ as per https://github.com/endocode/coreos-docs/blob/master/os/adding-users.md#ad
 To start over:
 
     sudo userdel -rZ vorburger
+
+_TODO https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/ : `loginctl enable-linger` may be required for personal users, e.g. on Silverblue desktop (but not on CoreOS)._
 
 _TODO `/etc/subuid` and `/etc/subgid` ?_
 
