@@ -157,7 +157,7 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 `podman run ... --read-only`, with or without `--read-only-tmpfs`, are other options possibly of interest.
 
 `loginctl enable-linger core && systemctl --user enable --now hello-app` enables the unit to auto-start.
-(See [Documention about enabling systemd lingering](https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/).)
+(`enable-linger` is not required if Butane 0644 creates `/var/lib/systemd/linger/core`, see [Documention about enabling systemd lingering](https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-user-systemd-unit-on-boot/).)
 
 `sudo systemctl reboot` tests the container's automatic start-up.
 
@@ -193,6 +193,10 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
     [Install]
     WantedBy=multi-user.target default.target
 
+`systemctl --user enable --now hello-app` enables this on boot.
+
+https://github.com/containers/podman/issues/10189 discusses making it possible to auto-generate this.
+
 Nota bene that `podman play kube --log-driver journald` is broken in Podman 3.1.0
 due to https://github.com/containers/podman/issues/10015, fixed by https://github.com/containers/podman/pull/10044;
 https://github.com/containers/podman/issues/10117 seems to imply that Podman 3.1.1+ will include the fix, and indeed
@@ -226,9 +230,9 @@ _TODO Just add to [`first.bu`](first.bu) instead?_
 
 ## ToDo
 
+1. [podman from within toolbox](https://github.com/containers/toolbox/issues/145)
 1. Matrix? https://fedoramagazine.org/deploy-your-own-matrix-server-on-fedora-coreos/
 1. IPFS
-1. podman from within toolbox
 1. Marketplace
 1. webshell
 1. Kube, e.g. https://github.com/poseidon/typhoon
