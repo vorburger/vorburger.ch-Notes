@@ -123,6 +123,25 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 `ls /sys/firmware/efi/` existence proves that CoreOS ISO booted as UEFI.
 
 
+## Containers
+
+`podman run -d --name hello-app -p 9090:8080 gcr.io/google-samples/hello-app:1.0` runs https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app on http://localhost:9090.
+
+`podman generate systemd --new -n hello-app > ~/.config/systemd/user/hello-app.service` produces a proposed systemd service unit file.
+
+`systemctl --user start hello-app` starts it. systemd automatically restarts this container. Test this e.g. by doing `podman stop hello-app` - it comes back!  (You may however want to tweak the `TimeoutStopSec=7`, and perhaps change the generated `Restart=on-failure` to `Restart=always` so that even an "orderly" (`exit 0`) container stop causes restarts.)
+
+`systemctl --user status hello-app` shows podman logs, but NOT the container's logs.  Adding `--log-driver=journald` to `podman run` _and remember to `systemctl --user daemon-reload`_ before a `systemctl --user restart hello-app` and `status` will show the container's logs.  (An older alternative was to instead remove `-d` **AND** `Type=forking`; but that approach seems to consume more memory, according to systemctl status. Makes sense, right?)
+
+`journalctl --user -u hello-app` shows a full longer log than `systemctl status`.
+
+`podman run ... --read-only`, with or without `--read-only-tmpfs`, are other options possibly of interest.
+
+`systemctl --user enable --now hello-app` enables the unit to auto-start. Test this e.g. by doing `systemctl reboot` and seeing it still run.
+
+_TODO `loginctl enable-linger` may be required for personal users, e.g. on Silverblue desktop (but not on CoreOS)._
+
+
 ## Personal User
 
 Let's set-up another user than `core`, which does not have root, that we use for development, and under which we can later run containers,
@@ -139,15 +158,16 @@ To start over:
 
     sudo userdel -rZ vorburger
 
+_TODO `/etc/subuid` and `/etc/subgid` ?_
+
 _TODO Just add to [`first.bu`](first.bu) instead?_
 
 
 ## ToDo
 
-1. hello, world server container, like https://docs.fedoraproject.org/en-US/fedora-coreos/tutorial-containers/, via Git!
-1. custom toolbox
-1. podman from within toolbox
+1. Matrix? https://fedoramagazine.org/deploy-your-own-matrix-server-on-fedora-coreos/
 1. IPFS
+1. podman from within toolbox
 1. Marketplace
 1. webshell
 1. Kube, e.g. https://github.com/poseidon/typhoon
