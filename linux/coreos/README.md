@@ -125,19 +125,23 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 
 ## Containers
 
-`podman run -d --name hello-app -p 9090:8080 gcr.io/google-samples/hello-app:1.0` runs https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app on http://localhost:9090.
+`podman run -d --name hello-app -p 9090:8080 gcr.io/google-samples/hello-app:1.0` runs https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app on http://localhost:9090. But this is manual, and won't survive a restart.
 
 `podman generate systemd --new -n hello-app > ~/.config/systemd/user/hello-app.service` produces a proposed systemd service unit file.
 
-`systemctl --user start hello-app` starts it. systemd automatically restarts this container. Test this e.g. by doing `podman stop hello-app` - it comes back!  (You may however want to tweak the `TimeoutStopSec=7`, and perhaps change the generated `Restart=on-failure` to `Restart=always` so that even an "orderly" (`exit 0`) container stop causes restarts.)
+`podman rm -f hello-app` stops the initial manually started container.
 
-`systemctl --user status hello-app` shows podman logs, but NOT the container's logs.  Adding `--log-driver=journald` to `podman run` _and remember to `systemctl --user daemon-reload`_ before a `systemctl --user restart hello-app` and `status` will show the container's logs.  (An older alternative was to instead remove `-d` **AND** `Type=forking`; but that approach seems to consume more memory, according to systemctl status. Makes sense, right?)
+`systemctl --user start hello-app` starts it as a service. systemd automatically restarts this container. Test this e.g. by doing `podman stop hello-app` - it comes back!  (You may however want to tweak the `TimeoutStopSec=7`, and perhaps change the generated `Restart=on-failure` to `Restart=always` so that even an "orderly" (`exit 0`) container stop causes restarts.)
+
+`systemctl --user status hello-app` shows podman logs, but NOT the container's logs.  Add `--log-driver=journald` after `podman run` in `~/.config/systemd/user/hello-app.service`, _and remember to `systemctl --user daemon-reload`_ before a `systemctl --user restart hello-app` - and `status` will now show the container's logs.  (An older alternative was to instead remove `-d` **AND** `Type=forking`; but that approach seems to consume more memory, according to systemctl status. Makes sense, right?)
 
 `journalctl --user -u hello-app` shows a full longer log than `systemctl status`.
 
 `podman run ... --read-only`, with or without `--read-only-tmpfs`, are other options possibly of interest.
 
-`systemctl --user enable --now hello-app` enables the unit to auto-start. Test this e.g. by doing `systemctl reboot` and seeing it still run.
+`systemctl --user enable --now hello-app` enables the unit to auto-start.
+
+`sudo systemctl reboot` tests the container's automatic start-up.
 
 _TODO `loginctl enable-linger` may be required for personal users, e.g. on Silverblue desktop (but not on CoreOS)._
 
