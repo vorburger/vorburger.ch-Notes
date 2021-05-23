@@ -235,17 +235,3 @@ To start over:
  _TODO `/etc/subuid` and `/etc/subgid` ?_
 
 _TODO Just add to [`first.bu`](first.bu) instead?_
-
-
-## ToDo
-
-1. [podman from within toolbox](https://github.com/containers/toolbox/issues/145)
-1. Matrix? https://fedoramagazine.org/deploy-your-own-matrix-server-on-fedora-coreos/
-1. IPFS
-1. Marketplace
-1. webshell
-1. Kube, e.g. https://github.com/poseidon/typhoon
-1. cadvisor
-1. CoreOS disable non-needing systemd service processes? (Minor optimization)
-1. CoreOS security.. as long as root account exists, and files can be ostree added and reboot, still risk?
-1. How to make a custom CoreOS based distribution, self built, with much less packages? No podman, no docker..
