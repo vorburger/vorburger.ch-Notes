@@ -3,7 +3,7 @@
 ## OSTree
 
 After running e.g. `rpm-ostree install kitty`
-as e.g. in https://github.com/vorburger/vorburger-dotfiles-bin-etc/blob/master/ostree-install-gui.sh,
+as e.g. in [my `ostree-install-gui.sh`](https://github.com/vorburger/vorburger-dotfiles-bin-etc/blob/master/ostree-install-gui.sh),
 `rpm-ostree status` shows what's currently running, and what it should boot into on the next `systemctl reboot`:
 
     $ rpm-ostree status
@@ -15,7 +15,7 @@ as e.g. in https://github.com/vorburger/vorburger-dotfiles-bin-etc/blob/master/o
     ● fedora:fedora/36/x86_64/silverblue
                       Version: 36.1.5 (2022-05-04T18:42:06Z)
 
-Beware that that _Warning_ on top means that `install` won't work!  This is a known bug:
+But beware that that _Warning_ on top means that `install` won't work!  This is a known bug:
 
 * https://github.com/coreos/rpm-ostree/issues/3925
 * https://bugzilla.redhat.com/show_bug.cgi?id=2096192
