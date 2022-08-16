@@ -15,7 +15,13 @@ as e.g. in [my `ostree-install-gui.sh`](https://github.com/vorburger/vorburger-d
     ● fedora:fedora/36/x86_64/silverblue
                       Version: 36.1.5 (2022-05-04T18:42:06Z)
 
-But beware that that _Warning_ on top means that `install` won't work!  This is a known bug:
+But beware that that _Warning_ on top means that `install` won't work!  The following workaround did the trick for me:
+
+    find /boot/efi -exec touch '{}' ';'
+    sudo ostree admin finalize-staged
+    systemctl reboot
+
+_This has to be re-run after EVERY `rpm-ostree install`, BEFORE the next reboot!_ This is a known bug:
 
 * https://github.com/coreos/rpm-ostree/issues/3925
 * https://bugzilla.redhat.com/show_bug.cgi?id=2096192
@@ -23,9 +29,6 @@ But beware that that _Warning_ on top means that `install` won't work!  This is 
 * https://ask.fedoraproject.org/t/fedora-silverblue-36-will-not-succesfully-deploy-after-layering-packages/25352/13
 * https://discussion.fedoraproject.org/t/rpm-ostree-updates-broken-cant-rollback-grub2-mkconfig-erroring-out/33982
 
-The following workaround did the trick for me:
-
-TBC.
 
 
 ## Flatpack
