@@ -1,5 +1,6 @@
 This contains my public Blog like Notes (including like "Trip Reports"):
 
+* 2022.08.16 [Silverblue](linux/silverblue.md)
 * 2022.03.13 [DAppNode](linux/dappnode/)
 * 2021.12.11 [Log4j earthquake](https://github.com/vorburger/Log4j_CVE-2021-44228)
 * 2021.05.02 [crypt.co Krypton](security/krypt.co.md)
