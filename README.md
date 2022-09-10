@@ -1,6 +1,8 @@
 This contains my public Blog like Notes (including like "Trip Reports"):
 
-* 2022.09.09 [`systemd-analyze`](linux/systemd-analyze.md) and [Entropy](linux/entropy.md)
+* 2022.09.10 [Launch CLI tool in new terminal window](linux/gnome-terminal.md)
+* 2022.09.09 [`systemd-analyze`](linux/systemd-analyze.md)
+* 2022.09.09 [Entropy](linux/entropy.md)
 * 2022.08.16 [Silverblue](linux/silverblue.md)
 * 2022.03.13 [DAppNode](linux/dappnode/)
 * 2021.12.11 [Log4j earthquake](https://github.com/vorburger/Log4j_CVE-2021-44228)
