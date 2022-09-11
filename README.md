@@ -1,5 +1,6 @@
 This contains my public Blog like Notes (including like "Trip Reports"):
 
+* 2022.09.11 [Fish is a great interactive shell, but not suitable for scripting](linux/fish-scripting.md)
 * 2022.09.10 [Launch CLI tool in new terminal window](linux/gnome-terminal.md)
 * 2022.09.09 [`systemd-analyze`](linux/systemd-analyze.md)
 * 2022.09.09 [Entropy](linux/entropy.md)
