@@ -10,4 +10,4 @@ Fish is great as an interactive Shell, but without this feature, I cannot start 
 
 I don't see any viable workaround.  Ending **EACH** line with `|| exit 1` is just... dumb.
 
-Perhaps I'll have to properly learn and use... what, Pythonm, after all??? :))
+Perhaps I'll have to properly learn and use... what, Python, after all??? :))
