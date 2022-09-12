@@ -15,6 +15,7 @@ export KERNEL
 gnome-terminal -- bash -c '\
   qemu-system-x86_64 \
     (...)
+    -serial stdio  -nographic  -display none \
     -kernel "$KERNEL" ; \
   read -p "QEMU has exited - press any key to close this window..."'
 ```
