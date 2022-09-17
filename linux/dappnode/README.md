@@ -4,17 +4,8 @@ https://dappnode.io
 
 ## ToDo
 
-1. Use Geth, how-to with http://geth.dappnode:8545 ? VPN?
-1. Install http://dappnode.local/#/installer/dms.dnp.dappnode.eth
-1. http://dappnode.local/#/system/security Host Updates
-1. Geth sync finished on http://dappnode.local/#/dashboard?
-1. Install http://dappnode.local/#/installer/prysm.dnp.dappnode.eth
-1. Ethereum RPC API ?
-1. Learn more about accessing `.eth` domains, through VPN? But what example domain?
-1. http://dappnode.local/#/installer More packages to install?
-1. http://dappnode.local/#/community => https://sourcecred.dappnode.io/#/explorer PAN?
-1. [DAppNode DApp list ](https://docs.google.com/forms/d/e/1FAIpQLSf-SI3NfcvD0tXLvn6aoBpHpwiujjhg8z8kuCDCyFka-f5cRQ/viewform)
 1. https://github.com/dappnode/DAppNode/issues/406: IPFS conflicts if using Brave's own local built-in IPFS Node.
+   E.g. http://ipfs.dappnode:5001/webui works in Firefox but not in Brave by default
    Instead, add 8080 on http://dappnode.local/#/packages/ipfs.dnp.dappnode.eth/network.
    Now switch brave://settings/ipfs from _Brave local IPFS node_ to _Gateway_, and change the
    _IPFS public gateway address_ from the default https://dweb.link to http://dappnode:8080.
@@ -22,12 +13,37 @@ https://dappnode.io
    redirect` now works just like e.g. `curl https://gateway.ipfs.io/ipfs/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-
    redirect`, Brave fails due to `Only a valid IPFS gateway with Origin isolation enabled can be used in Brave`.
    _TODO Make Brave use DAppNode as IPFS Node!_ See  https://bafybeicospfr7cqekqutqxlcjp767vqmptxoriehv2gpfqvu4tq5c5okry.ipfs.dweb.link/concepts/ipfs-gateway/#limitations-and-potential-workarounds ... perhaps using a VPN fixes this?
+1. Retry http://alice.eth etc. once IPFS works, see https://github.com/dappnode/DAppNode/issues/492
+1. Install http://dappnode.local/#/installer/prysm.dnp.dappnode.eth
+1. http://dappnode.local/#/installer More packages to install?
+1. http://dappnode.local/#/community => https://sourcecred.dappnode.io/#/explorer PAN?
+1. [DAppNode DApp list ](https://docs.google.com/forms/d/e/1FAIpQLSf-SI3NfcvD0tXLvn6aoBpHpwiujjhg8z8kuCDCyFka-f5cRQ/viewform)
+1. Configure `/etc/wireguard/wg0.conf` to "route" / "lookup" (?) ONLY `.eth` and `.dappnode` domain names through that VPN? Test by shutdown DAppNode.
 1. (Re-)install and configure http://dappnode.local/#/packages/rotki.dnp.dappnode.eth/info
 1. git server (local at first, then on IPFS); e.g. on https://github.com/linuxserver?
 1. [Backups](https://docs.dappnode.io/user-guide/ui/recommended-set-ups/backup-functionality), for git server and other, on IPFS
 
+
+## Use
+
+* IPFS API
+  * TODO: How to publish a file on one local computer, pin it on the DAppNode, and then access it from another local computer?
+* Ethereum RPC API
+  * TODO: How to use http://dappnode.local/#/packages/geth.dnp.dappnode.eth/info's Querying API http://geth.dappnode:8545 and Engine API http//geth.dappnode:8551?
+* `*.eth` [domain names](https://ens.domains):
+  * [alice.eth](http://alice.eth) or [freedomain.eth](http://freedomain.eth) (or e.g. [radek.freedomain.eth](http://radek.freedomain.eth) from [this tutorial](http://radek.freedomain.eth) are some examples
+  * These normally do not resolve over traditional root DNS servers
+  * Brave has built-in ENS resolution by using Infura, instead of decentralized DAppNode
+  * When connected to DAppNode's WireGuard VPN, that will resolve both `.eth` and `.dappnode` domain names
+  * [nonexistantx.eth](http://nonexistantx.eth) should show an error message from DAppNode's `/usr/src/app/webpack:/@dappnode/dappmanager/src/ethForward/resolveDomain.ts`: _Decentralized website not found Make sure the ENS domain exists"
+  * `ipfs resolve -r /ipfs/: invalid path "/ipfs/": not enough path components` means _TODO, IDK, fix IPFS #first?_ See https://github.com/dappnode/DAppNode/issues/492
+
+
 ## Manage & Maintenance
 
+* http://dappnode.local
+* `sudo wg-quick up wg0` is required ;) to use `*.dappnode` hostnames
+* http://dms.dappnode/d/dappnode-exporter-host/host?orgId=1&refresh=10s
 * http://dappnode.local/#/system/security Host Updates
 * VPN: `sudo wg-quick up wg0` & `sudo wg-quick down wg0`
 * Power Off on http://dappnode.local/#/system/power.
@@ -51,11 +67,12 @@ As per official documentation, and then:
 1. Note http://dappnode.local/#/support/ports and open ports 4001-4002 for IPFS
    and 49154-49160 for Geth (or OpenEthereum), on both TCP/UPD, on the firewall.
    (The _API Scan_ button says _"Unknown"_ for the UDP ports, that's fine.)
-1. restart http://dappnode.local/#/packages/openethereum.dnp.dappnode.eth/info (?) and IPFS (both maybe not required?)
-1. check http://dappnode.local/#/packages/openethereum.dnp.dappnode.eth/logs
+1. restart ~~http://dappnode.local/#/packages/openethereum.dnp.dappnode.eth/info (?) and~~ IPFS (both maybe not required?)
+1. ~~check http://dappnode.local/#/packages/openethereum.dnp.dappnode.eth/logs~~
 1. check http://dappnode.local/#/packages/ipfs.dnp.dappnode.eth/logs
-1. Instead of VPN, simply adding e.g. 5001 e.g. on http://dappnode.local/#/packages/ipfs.dnp.dappnode.eth/network
-   allows to use e.g. http://dappnode:5001/ipfs/ instead of http://ipfs.dappnode:5001/webui; simple enough!
+1. ~~Instead of VPN, simply adding e.g. 5001 e.g. on http://dappnode.local/#/packages/ipfs.dnp.dappnode.eth/network
+   allows to use e.g. http://dappnode.local:5001/ipfs/ instead of http://ipfs.dappnode:5001/webui; simple enough!~~
+1. Wait for Geth sync finished on http://dappnode.local/#/dashboard
 1. http://dappnode.local/#/vpn/wireguard set-up:
    [Android set-up works](https://docs.dappnode.io/user-guide/ui/access/vpn/#android-1).
    But this tunnels all traffic through DAppNode, right? That seems like it may be a bad idea.
@@ -68,6 +85,9 @@ As per official documentation, and then:
    `sudo wg show`.
    Or could try out [`nm-connection-editor` etc.](https://www.xmodulo.com/wireguard-vpn-network-manager-gui.html).
    (GNOME Settings Network integration for Wireguard is WIP.)
+1. Install http://dappnode.local/#/installer/dappnode-exporter.dnp.dappnode.eth for https://github.com/prometheus/node_exporter 
+1. Install http://dappnode.local/#/installer/dms.dnp.dappnode.eth
+
 
 ## Support
 
