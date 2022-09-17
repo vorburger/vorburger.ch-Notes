@@ -4,15 +4,15 @@ https://dappnode.io
 
 ## ToDo
 
-1. Geth sync finished on http://dappnode.local/#/dashboard? Disable http://dappnode.local/#/system/repository.
+1. Use Geth, how-to with http://geth.dappnode:8545 ? VPN?
+1. Install http://dappnode.local/#/installer/dms.dnp.dappnode.eth
+1. http://dappnode.local/#/system/security Host Updates
+1. Geth sync finished on http://dappnode.local/#/dashboard?
 1. Install http://dappnode.local/#/installer/prysm.dnp.dappnode.eth
 1. Ethereum RPC API ?
 1. Learn more about accessing `.eth` domains, through VPN? But what example domain?
-1. Configure http://dappnode.local/#/packages/rotki.dnp.dappnode.eth/info
 1. http://dappnode.local/#/installer More packages to install?
 1. http://dappnode.local/#/community => https://sourcecred.dappnode.io/#/explorer PAN?
-1. git server (local at first, then on IPFS); e.g. on https://github.com/linuxserver?
-1. [Backups](https://docs.dappnode.io/user-guide/ui/recommended-set-ups/backup-functionality), for git server and other, on IPFS
 1. [DAppNode DApp list ](https://docs.google.com/forms/d/e/1FAIpQLSf-SI3NfcvD0tXLvn6aoBpHpwiujjhg8z8kuCDCyFka-f5cRQ/viewform)
 1. https://github.com/dappnode/DAppNode/issues/406: IPFS conflicts if using Brave's own local built-in IPFS Node.
    Instead, add 8080 on http://dappnode.local/#/packages/ipfs.dnp.dappnode.eth/network.
@@ -21,11 +21,14 @@ https://dappnode.io
    Even though `curl http://dappnode:8080/ipfs/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-
    redirect` now works just like e.g. `curl https://gateway.ipfs.io/ipfs/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-
    redirect`, Brave fails due to `Only a valid IPFS gateway with Origin isolation enabled can be used in Brave`.
-   _TODO Make Brave use DAppNode as IPFS Node!_ See  https://bafybeicospfr7cqekqutqxlcjp767vqmptxoriehv2gpfqvu4tq5c5okry.ipfs.dweb.link/concepts/ipfs-gateway/#limitations-and-potential-workarounds ... perhaps using a VPN fixes this?1. Install http://dappnode.local/#/installer/prysm.dnp.dappnode.eth
+   _TODO Make Brave use DAppNode as IPFS Node!_ See  https://bafybeicospfr7cqekqutqxlcjp767vqmptxoriehv2gpfqvu4tq5c5okry.ipfs.dweb.link/concepts/ipfs-gateway/#limitations-and-potential-workarounds ... perhaps using a VPN fixes this?
+1. (Re-)install and configure http://dappnode.local/#/packages/rotki.dnp.dappnode.eth/info
+1. git server (local at first, then on IPFS); e.g. on https://github.com/linuxserver?
+1. [Backups](https://docs.dappnode.io/user-guide/ui/recommended-set-ups/backup-functionality), for git server and other, on IPFS
 
+## Manage & Maintenance
 
-## Manage
-
+* http://dappnode.local/#/system/security Host Updates
 * VPN: `sudo wg-quick up wg0` & `sudo wg-quick down wg0`
 * Power Off on http://dappnode.local/#/system/power.
 
@@ -34,7 +37,7 @@ https://dappnode.io
 
 As per official documentation, and then:
 
-1. choose Initial Configuration Full Node Geth (OpenEthereum never sync'd)
+1. choose Initial Configuration Full Node Geth
 1. disable WiFi on http://dappnode.local/#/wifi/wifi
 1. run http://dappnode.local/#/system/security updates
 1. run http://dappnode.local/#/system/update
@@ -66,6 +69,17 @@ As per official documentation, and then:
    Or could try out [`nm-connection-editor` etc.](https://www.xmodulo.com/wireguard-vpn-network-manager-gui.html).
    (GNOME Settings Network integration for Wireguard is WIP.)
 
+## Support
+
+* [Discord](https://discord.com/channels/747647430450741309/747647430920503338)
+* [Issues](https://github.com/dappnode/DAppNode/issues)
+
+## Troubleshooting
+
+1. Logs on http://dappnode.local/#/support/activity
+1. DAppNode Package is not compatible: dappGet could not resolve request core.dnp.dappnode.eth@0.2.57, error on aggregate stage: IPFS hash not available /ipfs/QmUr87duodYqkWX8wZNuZCdWA35D3MSTZrxUzF9E4mFNY1: request to http://ipfs.dappnode:5001/api/v0/ls?timeout=30000ms&arg=%2Fipfs%2FQmUr87duodYqkWX8wZNuZCdWA35D3MSTZrxUzF9E4mFNY1 failed, reason: connect ECONNREFUSED 172.33.1.5:5001 Error fetching core.dnp.dappnode.eth@0.2.57 :: Shutdown & Reboot after Core packge upgrade failure due to the following seems to have helped at least somewhat.
+1. Repository Source Full node: using remote not available: Error: connect ECONNREFUSED :: This is caused e.g. if Geth is down, but is selected instead of a Remote or Light Client on http://dappnode.local/#/system/repository. Fix Geth, or switch to another one, to fix this.
+1. Geth error something or the other on the Dashboard, e.g. after a restart, sometimes goes away if you wait for a while to re-start and finish sync-ing.
 
 ## Bugs
 
