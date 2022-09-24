@@ -1,5 +1,8 @@
 # Fedora Silverblue
 
+See also [remaining ToDo](https://github.com/vorburger/Notes/blob/master/ToDo/LOW-PRIORITY/silverblue.md) (private).
+
+
 ## OSTree
 
     rpm-ostree install kitty
