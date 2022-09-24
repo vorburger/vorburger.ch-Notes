@@ -142,7 +142,7 @@ Note that UEFI Booting from USB can be PITA, especially if the machine already h
 
 ### Podman systemd status & troubleshooting
 
-1. `systemctl --user --status` shows if `State:` is `running` or `degraded`.
+1. `systemctl --user status` shows if `State:` is `running` or `degraded`.
 1. `systemctl --user --failed` to see the failed user services.
 1. `systemctl --user status $UNIT` to see status of a user service.
 1. `systemctl --user restart $UNIT` retarts a user service.
