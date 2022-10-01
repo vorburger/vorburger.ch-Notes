@@ -28,4 +28,6 @@ close Brave, and set up Sync again.
 `sudo dnf remove opensc` permanently fixes this, so that I don't have to keep doing it at each boot; [Fedora Bug #1893131](https://bugzilla.redhat.com/show_bug.cgi?id=1893131) has the full background.
 
 _TODO: Alternative, untested: Add [70-u2f.rules](https://github.com/Yubico/libfido2/blob/main/udev/70-u2f.rules) into `/etc/udev/rules.d/`?
-(And futzing around with `~/.gnupg/scdaemon.conf`? Add to [my dotfiles](https://github.com/vorburger/vorburger-dotfiles-bin-etc), if required.)_
+(And futzing around with `~/.gnupg/scdaemon.conf`? Add to [my dotfiles](https://github.com/vorburger/vorburger-dotfiles-bin-etc), if required.)
+Also note that [this support.yubico.com](https://support.yubico.com/hc/en-us/articles/360013714479-Troubleshooting-Issues-with-GPG) article seems
+to suggest adding `reader-port Yubico Yubi` to `~/.gnupg/scdaemon.conf`._
