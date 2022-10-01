@@ -26,3 +26,5 @@ close Brave, and set up Sync again.
 `sudo pkill gpg-agent && sudo systemctl restart pcscd` fixes this - but only temporarily, for the current boot.
 
 _TODO How to permanently fix this so that I don't have to keep doing it at each boot?!_
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1893131 has the full background.
