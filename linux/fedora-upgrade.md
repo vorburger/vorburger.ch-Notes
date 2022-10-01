@@ -25,6 +25,7 @@ close Brave, and set up Sync again.
 
 `sudo pkill gpg-agent && sudo systemctl restart pcscd` fixes this - but only temporarily, for the current boot.
 
-_TODO How to permanently fix this so that I don't have to keep doing it at each boot?!_
+`sudo dnf remove opensc` permanently fixes this, so that I don't have to keep doing it at each boot; [Fedora Bug #1893131](https://bugzilla.redhat.com/show_bug.cgi?id=1893131) has the full background.
 
-https://bugzilla.redhat.com/show_bug.cgi?id=1893131 has the full background.
+_TODO: Alternative, untested: Add [70-u2f.rules](https://github.com/Yubico/libfido2/blob/main/udev/70-u2f.rules) into `/etc/udev/rules.d/`?
+(And futzing around with `~/.gnupg/scdaemon.conf`? Add to [my dotfiles](https://github.com/vorburger/vorburger-dotfiles-bin-etc), if required.)_
