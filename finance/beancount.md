@@ -16,6 +16,8 @@ transaction importers for many financial institutions, a Web front-end, etc.
 Here is how to have a quick play with it to explore what it can do for you:
 
     mkdir LearningBeancount && cd LearningBeancount
+    
+    sudo apt install python3-venv
     python3 -m venv .venv
     source .venv/bin/activate.fish
 
