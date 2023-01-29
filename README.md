@@ -2,6 +2,7 @@
 
 This contains my public Blog like Notes, including "Trip Reports" and such:
 
+* 2023.01.29 [Java JDK Source Code in Visual Studio Code](java/vsc-java-src.md)
 * 2023.01.13 [Plain text accounting with Beancount](finance/beancount.md)
 * 2022.11.27 [The Need for Speed (Part 1)](networking/speed1.md)
 * 2022.10.01 [Fedora Upgrades](linux/fedora-upgrade.md)
