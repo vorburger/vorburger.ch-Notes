@@ -2,6 +2,8 @@
 
 This contains my public Blog like Notes, including "Trip Reports" and such:
 
+* 2023.04.01 [Linux Laptop power consumption optimization](linux/power.md)
+* 2023.03.31 [Tainted local-hwclock](linux/taintedlocal-hwclock.md)
 * 2023.03.16 [Voxxed Days Zürich](conferences/voxxed-zrh-2023.md)
 * 2023.01.29 [Java JDK Source Code in Visual Studio Code](java/vsc-java-src.md)
 * 2023.01.13 [Plain text accounting with Beancount](finance/beancount.md)
