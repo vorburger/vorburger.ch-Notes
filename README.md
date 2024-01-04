@@ -2,6 +2,7 @@
 
 This contains my public Blog like Notes, including "Trip Reports" and such:
 
+* 2024.01.04 [`gpg` hangs](security/gpg-hangs-on-hostname-change.md)
 * 2023.04.01 [Linux Laptop power consumption optimization](linux/power.md)
 * 2023.03.31 [Tainted local-hwclock](linux/taintedlocal-hwclock.md)
 * 2023.03.16 [Voxxed Days Zürich](conferences/voxxed-zrh-2023.md)
@@ -21,7 +22,7 @@ This contains my public Blog like Notes, including "Trip Reports" and such:
 * 2021.04 [Exploring Fedora CoreOS](linux/coreos/)
 * 2021.02 [FOSDEM](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
 
-by http://www.vorburger.ch, for anything that doesn't fit on https://twitter.com/vorburger,
+by http://www.vorburger.ch, for anything that doesn't fit on my Mastodon at https://tooting.ch/@vorburger,
 continuing http://blog2.vorburger.ch and older http://blog1.vorburger.ch. All content
 published here is shared under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).
 
