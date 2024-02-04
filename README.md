@@ -2,6 +2,7 @@
 
 This contains my public Blog like Notes, including "Trip Reports" and such:
 
+* 2024.02.04 [FOSDEM 2024](conferences/FOSDEM-2024.md)
 * 2024.01.04 [`gpg` hangs](security/gpg-hangs-on-hostname-change.md)
 * 2023.04.01 [Linux Laptop power consumption optimization](linux/power.md)
 * 2023.03.31 [Tainted local-hwclock](linux/taintedlocal-hwclock.md)
@@ -20,7 +21,7 @@ This contains my public Blog like Notes, including "Trip Reports" and such:
 * 2021.05.02 [crypt.co Krypton](security/krypt.co.md)
 * 2021.05.01 [SSH Key type ed25519-sk (and ecdsa-sk)](security/ed25519-sk.md)
 * 2021.04 [Exploring Fedora CoreOS](linux/coreos/)
-* 2021.02 [FOSDEM](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
+* 2021.02 [FOSDEM 2021](conferences/FOSDEM-2021.md) _(virtual, thanks COVID-19)_
 
 by http://www.vorburger.ch, for anything that doesn't fit on my Mastodon at https://tooting.ch/@vorburger,
 continuing http://blog2.vorburger.ch and older http://blog1.vorburger.ch. All content
