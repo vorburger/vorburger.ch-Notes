@@ -9,7 +9,7 @@ Looks like I [last blogged in 2021](FOSDEM-2021.md) (but I seem to have been too
 
 For the first time, I traveled from Switzerland to Belgium via Paris by train, instead of by plane.
 I'm not entirely sure anymore if it's not already too late for this climate gesture to save the 🐧 and the 🐢, but it still seemed worth giving it a shot.
-(Sadly travel by train was more expensive than flying - talk about upside town economic incentives!)
+(Sadly travel by train was more expensive than flying - talk about upside down economic incentives!)
 
 ## Friday
 
@@ -45,11 +45,11 @@ Between talks I ran into some old friends in hallways - notably Zaheda and Dave 
 
 * [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/) provide a Common Schema for Observability.
 
-* [SCION](https://scion-architecture.net) (on [GitHub](https://github.com/scionproto/scion)), a clean re-design of a new Internet architecture. Designed for security, as an alternative to BGP/IP. From ETH in Zürich, Switzerland. Has ~100+ ASes with a few international ISPs. Notably underlying the Secure Swiss Finance Network (SSFN), which phases out previous Finance IPNet by June 2024, and the Secure Swiss Health Network (SSHN). Clients can put constraints on routes, and e.g. exclude some AS or entire "domains" (which they typically map to jurisdictions, apparently). AWS offers SCION access already, and there are Browser extensions, and client libraries in Go, Rust, Java and other bindings. It all sounded interesting - but... a change of this order of magnitude is (very) ambitious - just think IPv6. How realistic is it for this to gain any sufficiently relevant adoption, outside of niche private networks, à la SSFN/SSHN? What value does full AS exclusion really add that you in practice don't similarly already get with a classic encrypting overlay VPN network? Is this unique, or does every network research group build one of these? (Just like every CS departement really should come up with a new comp lang, for some self respect?) IDK.
+* [SCION](https://scion-architecture.net) (on [GitHub](https://github.com/scionproto/scion)), a clean re-design of a new Internet architecture. Designed for security, as an alternative to BGP/IP. From ETH in Zürich, Switzerland. Has ~100+ ASes at a few international ISPs connected. Notably underlying the Secure Swiss Finance Network (SSFN), which phases out previous Finance IPNet by June 2024, and the Secure Swiss Health Network (SSHN). Clients can put constraints on routes, and e.g. exclude some AS or entire "domains" (which they typically map to jurisdictions, apparently). AWS offers SCION access already, and there are Browser extensions, and client libraries in Go, Rust, Java and other bindings. It all sounded interesting - but... a change of this order of magnitude is (very) ambitious - just think IPv6. How realistic is it for this to gain any sufficiently relevant adoption, outside of niche private networks, à la SSFN/SSHN? What value does full AS exclusion really add that you in practice don't similarly already get with a classic encrypting overlay VPN network? Is this unique, or does every network research group build one of these? (Just like every CS departement really should come up with a new prog lang, for some self respect?) IDK.
 
 * [Version control post-Git](https://fosdem.org/2024/schedule/event/fosdem-2024-3423-version-control-post-git/) presented [Pijul](https://pijul.org) is a new Version Control System (VCS). It uses Operational Transforms (OT), and smart math, which makes it much better than Git... more intelligent conflict handling, no need for Git LFS like hacks, and much more scalable to huge mono repos (or so the speaker claimed; I know of a certain one at work that could be fun to try this with). I thought it looks promising.
 
-Between talks I chat with Nicolas, a (no more!) "friendly stranger" that was at the dinner with Kai, Matthias and Rika yesterday evening. He lives in a city nearby home, and works in embedded systems - and helped me better understand what the [_Device Tree_ in Linux for ARM](https://docs.kernel.org/devicetree/usage-model.html) was all about - Thank You!
+Between talks I chat with Nicolas, a (no more!) "friendly stranger" that was at the dinner with Kai, Matthias and Rika yesterday evening. He lives in a city nearby home, and works in embedded systems - and helped me better understand what the [Device Tree_ in Linux for ARM](https://docs.kernel.org/devicetree/usage-model.html) was all about - Thank You!
 
 ## Booths
 
