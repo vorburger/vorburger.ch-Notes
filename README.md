@@ -2,6 +2,7 @@
 
 This contains my public Blog like Notes, including "Trip Reports" and such:
 
+* 2024.02.20 [Visual Studio Code Tunnel systemd service authorization token refresh](security/vsc-token.md)
 * 2024.02.04 [FOSDEM 2024](conferences/FOSDEM-2024.md)
 * 2024.01.04 [`gpg` hangs](security/gpg-hangs-on-hostname-change.md)
 * 2023.04.01 [Linux Laptop power consumption optimization](linux/power.md)
