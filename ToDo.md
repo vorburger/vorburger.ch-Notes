@@ -9,6 +9,8 @@
 
 1. Make `./build` script validate all links (internal and external) that are reachable from the generated `site/index.html` with a suitable CLI tool; ideally one that caches external links for a little while.
 
-1. Better AI image generation
+1. Optimze loading by image size reduction on homepage (https://blog3.vorburger.ch), but not individual posts
+
+1. Better (?) AI image generation
 
 1. Prettier HTML layout template
