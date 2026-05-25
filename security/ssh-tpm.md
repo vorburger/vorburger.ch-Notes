@@ -34,3 +34,28 @@ Transfer `~/.ssh/id_ecdsa.pub` to https://github.com/settings/keys, and test it:
     $ ssh git@github.com
 
 Voilà!
+
+## Update
+
+    ll ~/go/bin/ssh-tpm-keygen
+    go install github.com/foxboron/ssh-tpm-agent/cmd/...@latest
+    ll ~/go/bin/ssh-tpm-keygen
+
+    systemctl --user restart ssh-tpm-agent.socket
+    systemctl --user restart ssh-tpm-agent.service
+    ssh git@github.com
+
+## Troubleshooting
+
+    systemctl --user stop ssh-tpm-agent.socket
+    ssh-tpm-agent -d
+
+    set -gx SSH_AUTH_SOCK (ssh-tpm-agent --print-socket)
+    ssh git@github.com
+
+Note that if you by accident ran the `ssh-tpm-agent` in the foreground
+without stopping the `ssh-tpm-agent.service`, then they'll "trample on
+each other's ownership of the socket", and this will help:
+
+    systemctl --user restart ssh-tpm-agent.socket
+

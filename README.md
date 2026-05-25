@@ -6,6 +6,7 @@ This is the source code for https://blog3.vorburger.ch - you might want to read 
 
 This contains my public Blog like Notes, including "Trip Reports" and such:
 
+* 2026-05-25 [SSH failure due to gcr-ssh-agent](linux/gcr-ssh-agent.md)
 * 2026-04-05 [AI gone loco](ml/ai-gone-loco-mad.md)
 * 2026-03-31 [Calculating Gemini CLI Token Costs for Agentic Vibe Coding](ml/gemini-cli-cost.md)
 * 2026-03-30 [Parallelizing Agentic Coding: Supercharging AI Workflows with Terminal Notifications](linux/terminal-bells.md)
