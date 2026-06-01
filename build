@@ -26,6 +26,7 @@ if command -v lychee >/dev/null 2>&1; then
     echo "Checking links with lychee..."
     lychee site/
 else
-    echo "Warning: 'lychee' not found in PATH; skipping link checks." >&2
+    echo "Error: 'lychee' not found in PATH." >&2
     echo "Install lychee to enable link checking: https://lychee.cli.rs/installation/" >&2
+    exit 2
 fi
