@@ -9,11 +9,11 @@ if command -v hugo >/dev/null 2>&1; then
     echo HUGO_VERSION="$HUGO_VERSION"
     echo "Found hugo in PATH, building..."
     hugo version
-    hugo build $HUGO_ARGS
+    hugo $HUGO_ARGS
 elif command -v nix >/dev/null 2>&1; then
     echo "hugo not found in PATH, but nix found. Building with nix..."
     nix run nixpkgs#hugo -- version
-    nix run nixpkgs#hugo -- build $HUGO_ARGS
+    nix run nixpkgs#hugo -- $HUGO_ARGS
 else
     echo "Error: Neither 'hugo' nor 'nix' was found in your PATH." >&2
     echo "Please install Hugo (https://gohugo.io/installation/) or Nix (https://nixos.org/download.html)." >&2
@@ -21,3 +21,11 @@ else
 fi
 
 echo "Build complete. Output is in the 'site/' directory."
+
+if command -v lychee >/dev/null 2>&1; then
+    echo "Checking links with lychee..."
+    lychee site/
+else
+    echo "Warning: 'lychee' not found in PATH; skipping link checks." >&2
+    echo "Install lychee to enable link checking: https://lychee.cli.rs/installation/" >&2
+fi
