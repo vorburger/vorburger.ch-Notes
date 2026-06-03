@@ -135,4 +135,4 @@ It has been a pleasure interacting with you. If you have any further questions o
 
 PS: It was quite fun to see the poor brand new graphics card struggling to serve x2 4k Displays **AND** run an LLM at the same time; screen redraws and cursor movements (almost) come to a standstill when running Meta's "big" `llama3:70b` (vs. Google's `gemma:7b`, above) - and `nvtop` showed _GPU0 mem%_ maxed out!
 
-![nvtop showing maxed out GPU0 mem%](screenshot_2024-05-19_23-41-16.png)
+![nvtop showing maxed out GPU0 mem%](/images/screenshot_2024-05-19_23-41-16.png)

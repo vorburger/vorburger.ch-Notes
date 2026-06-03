@@ -1,0 +1,9 @@
+# lychee link checker configuration
+# https://lychee.cli.rs/usage/config/
+
+# Only check local/offline links; external link checking is handled separately
+offline = true
+
+# Do not check fragments (Hugo's --minify produces unquoted HTML attributes
+# which lychee cannot parse for fragment anchors)
+include_fragments = "none"

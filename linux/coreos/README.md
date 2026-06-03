@@ -86,14 +86,14 @@ See https://docs.fedoraproject.org/en-US/fedora-coreos/storage/ :
     mount
     free -h
 
-Note that there's No Swap, by default (good), but there's a 50 GB `/var`, defined in our [`first.bu`](first.bu).
+Note that there's No Swap, by default (good), but there's a 50 GB `/var`, defined in our [`first.bu`](/linux/coreos/first.bu).
 
 
 ## cgroups v2
 
 As per https://lists.fedoraproject.org/archives/list/coreos-status@lists.fedoraproject.org/thread/6NGBXYMJ4YU3V667XN627WOGCJA47POT/,
 with some background e.g. on https://thenewstack.io/linux-cgroups-v2-brings-rootless-containers-superior-memory-management/,
-with the our [`first.bu`](first.bu), `ls /sys/fs/cgroup` shows e.g. `system.slice` with the limits of each systemd service.
+with the our [`first.bu`](/linux/coreos/first.bu), `ls /sys/fs/cgroup` shows e.g. `system.slice` with the limits of each systemd service.
 
 
 ## Reset VM and start over
@@ -241,4 +241,4 @@ To start over:
 
  _TODO `/etc/subuid` and `/etc/subgid` ?_
 
-_TODO Just add to [`first.bu`](first.bu) instead?_
+_TODO Just add to [`first.bu`](/linux/coreos/first.bu) instead?_
